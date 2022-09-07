@@ -1,0 +1,106 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  background: #f1f1f1;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: clamp(20px, 5vw, 50px) 20px 20px;
+}
+
+.img_wiki {
+  width:clamp(100px, 25vw, 250px);
+  height: 0 auto;
+  margin: 0 auto;
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+  margin: 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3em;
+}
+
+.input_text {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+  width: 75%;
+  margin: 0 auto;
+  font-size: 18px;
+  padding: 1em;
+}
+
+.input_submit{
+  padding: 1em;
+  margin-top: 2em;
+  width: 10em;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+}
+.error_msg {
+  text-align: center;
+  color: #dd3333;
+  margin: 2em;
+}
+
+.load {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  background-color: black;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin:0 3px;
+  animation: loading 0.3s infinite ease-out alternate;
+}
+.dot:nth-child(2){
+  animation-delay: 0.1s;
+}
+
+.dot:nth-child(3){
+  animation-delay: 0.2s ;
+}
+  @keyframes loading {
+    to{
+      transform: translateY(10px);
+    }
+  }
+.card{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.result_title{
+  color: #0645ad;
+  font-size: 1.5em;
+}
+
+.result_display{
+margin: 0 auto;
+width: auto;
+
+}
+
+.result_link{
+  color: darkgreen;
+}
+  
