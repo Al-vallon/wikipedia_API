@@ -51,9 +51,9 @@ function createCards(data){
         cards.className = "card";
         cards.innerHTML = `
         <h3 class="result_title">
-        <a class="link" href = "" target = _blank">${el.title}</a>
+        <a class="link" href = "${url}" target = _blank">${el.title}</a>
         </h3>
-        <a class="result_link" href = "" "target = _blank">${url}</a>
+        <a class="result_link" href = "${url}" "target = _blank">${url}</a>
         <span class='result_snippet'>${el.snippet}</span>
         `
         resultDisplay.appendChild(cards)        
