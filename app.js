@@ -25,21 +25,23 @@ function handleSubmit(e) {
     async function wikiApiCall(searchInput){
         try {
             const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`);       
+            if(!response.ok){
+                throw new  Error(errorMsg.textContent = `There is a ${response.status} error. Connection is lost !! 🤷‍♀️`)
+            }
             const data = await response.json();
             createCards(data.query.search);
             load.style.display = "none";
-            console.log(data);
+            
             } catch (error) {
                 errorMsg.textcontent = `${error}`;
                 load.style.display = "none";
         }
     };
-
 };
 
 function createCards(data){
     if (!data.length){
-        errorMsg.textContent = 'it \'s empty';
+        errorMsg.textContent = 'No results founded 🕵️‍♂️';
         return;
     }
     
@@ -56,6 +58,4 @@ function createCards(data){
         `
         resultDisplay.appendChild(cards)        
     });
-
-
 };

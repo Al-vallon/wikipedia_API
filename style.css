@@ -55,6 +55,8 @@ form {
   text-align: center;
   color: #dd3333;
   margin: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .load {
@@ -86,7 +88,7 @@ form {
 .card{
   display: flex;
   flex-direction: column;
-  width: 75%;
+  
 }
 
 .result_title{
@@ -95,7 +97,7 @@ form {
 }
 
 .result_display{
-margin: 0 auto;
+margin: 0 15%;
 width: auto;
 
 }
@@ -103,4 +105,7 @@ width: auto;
 .result_link{
   color: darkgreen;
 }
+
+@media screen {
   
+}
