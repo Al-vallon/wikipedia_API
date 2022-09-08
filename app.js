@@ -1,9 +1,11 @@
 // API ENDPOINT : `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
 'user strict'
 
-const form = document.querySelector('form')
-const input = document.querySelector('.input_text')
-const errorMsg = document.querySelector('.error_msg')
+const form = document.querySelector('form');
+const input = document.querySelector('.input_text');
+const errorMsg = document.querySelector('.error_msg');
+const resultDisplay = document.querySelector('.result_display');
+const load = document.querySelector('.load');
 
 form.addEventListener('submit', handleSubmit);
 
@@ -15,18 +17,25 @@ function handleSubmit(e) {
         return;
     } else {
         errorMsg.textContent = '';
-        wikiApiCall(input.value)
-    }
+        load.style.display = "flex";
+        resultDisplay.textContent = '';
+        wikiApiCall(input.value);
+    };
 
     async function wikiApiCall(searchInput){
-        const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`);       
-        const data = await response.json();
-        createCards(data.query.search);
-        console.log(data);
-    }
-}
+        try {
+            const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`);       
+            const data = await response.json();
+            createCards(data.query.search);
+            load.style.display = "none";
+            console.log(data);
+            } catch (error) {
+                errorMsg.textcontent = `${error}`;
+                load.style.display = "none";
+        }
+    };
 
-const resultDisplay = document.querySelector('.result_display')
+};
 
 function createCards(data){
     if (!data.length){
@@ -45,8 +54,8 @@ function createCards(data){
         <a class="result_link" href = "" "target = _blank">${url}</a>
         <span class='result_snippet'>${el.snippet}</span>
         `
-        resultDisplay.appendChild(cards)
-        
+        resultDisplay.appendChild(cards)        
     });
 
-}
+
+};
